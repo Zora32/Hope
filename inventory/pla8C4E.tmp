@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=6 format=3 uid="uid://cjd1qabtpcbsj"]
+
+[ext_resource type="Script" path="res://inventory/inventorySlot.gd" id="2_6lo6b"]
+[ext_resource type="Script" path="res://inventory/items/health_item.gd" id="3_ua40u"]
+[ext_resource type="Script" path="res://inventory/inventory.gd" id="4_sgeui"]
+
+[sub_resource type="Resource" id="Resource_k8sdm"]
+script = ExtResource("3_ua40u")
+health_increase = 1
+name = ""
+max_amount = 10
+consumable = true
+
+[sub_resource type="Resource" id="Resource_ovcvv"]
+script = ExtResource("2_6lo6b")
+item = SubResource("Resource_k8sdm")
+amout = 4
+
+[resource]
+script = ExtResource("4_sgeui")
+slots = Array[ExtResource("2_6lo6b")]([SubResource("Resource_ovcvv"), null, null, null, null, null, null, null, null, null, null, null, null, null, null])

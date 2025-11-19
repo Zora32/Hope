@@ -1,7 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://chfhklhofoiu"]
+[gd_scene load_steps=7 format=3 uid="uid://chfhklhofoiu"]
 
 [ext_resource type="PackedScene" uid="uid://c2jj5uh2ps7vd" path="res://Collectobls/collectable.tscn" id="1_5awd8"]
 [ext_resource type="Texture2D" uid="uid://bcxs0fesk3v6k" path="res://art/LifePot.png" id="2_gv6jr"]
+[ext_resource type="Script" path="res://inventory/items/health_item.gd" id="2_o7yav"]
+
+[sub_resource type="Resource" id="Resource_fy6en"]
+script = ExtResource("2_o7yav")
+health_increase = 1
+name = "lifepot"
+texture = ExtResource("2_gv6jr")
+max_amount = 10
+consumable = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5ili"]
 resource_local_to_scene = true
@@ -10,6 +19,7 @@ size = Vector2(10, 12)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ljgp"]
 
 [node name="Lifepot" instance=ExtResource("1_5awd8")]
+itemRes = SubResource("Resource_fy6en")
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_d5ili")

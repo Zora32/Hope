@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://c418huvl5qjn6"]
+[gd_resource type="Resource" script_class="HealthItem" load_steps=3 format=3 uid="uid://c418huvl5qjn6"]
 
-[ext_resource type="Script" path="res://inventory/inventoryItem.gd" id="1_x5blh"]
+[ext_resource type="Script" path="res://inventory/items/health_item.gd" id="1_d283q"]
 [ext_resource type="Texture2D" uid="uid://bcxs0fesk3v6k" path="res://art/LifePot.png" id="2_2gfx7"]
 
 [resource]
-script = ExtResource("1_x5blh")
-name = "livepot"
+script = ExtResource("1_d283q")
+health_increase = 1
+name = "lifepot"
 texture = ExtResource("2_2gfx7")
 max_amount = 10
 consumable = true

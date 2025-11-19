@@ -105,9 +105,9 @@ func stackItems(slot):
 	var maxAmout = slotItem.inventorySlot.item.max_amount
 	var totalAmout = slotItem.inventorySlot.amout + itemInHand.inventorySlot.amout
 	
-	if slotItem.inventorySlot.amout == maxAmout:
-		swapItems(slot)
-		return
+	#if slotItem.inventorySlot.amout == maxAmout:
+		#swapItems(slot)
+		#return
 	if totalAmout <= maxAmout:
 		slotItem.inventorySlot.amout = totalAmout
 		remove_child(itemInHand)

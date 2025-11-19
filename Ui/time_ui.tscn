@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=3 uid="uid://25v6ryvh6e4a"]
+
+[ext_resource type="Script" path="res://Ui/time_ui.gd" id="1_0ds5m"]
+[ext_resource type="Texture2D" uid="uid://glaw2o4x3mjp" path="res://art/Время 1.png" id="1_ybvo8"]
+[ext_resource type="LabelSettings" uid="uid://csb3tpv1v0sa3" path="res://Asset/label_settings.tres" id="2_x8glv"]
+
+[node name="TimeGui" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 69.0
+offset_bottom = 63.0
+script = ExtResource("1_0ds5m")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 69.0
+offset_bottom = 63.0
+texture = ExtResource("1_ybvo8")
+region_rect = Rect2(0, 0, 16, 19)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="DayControl" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 57.0
+offset_bottom = 20.0
+
+[node name="days" type="Label" parent="DayControl"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 4.0
+offset_right = 64.0
+offset_bottom = 27.0
+text = "999"
+label_settings = ExtResource("2_x8glv")
+horizontal_alignment = 2
+
+[node name="sun" type="Sprite2D" parent="DayControl"]
+position = Vector2(20, 14)
+texture = ExtResource("1_ybvo8")
+region_enabled = true
+region_rect = Rect2(41.9724, 0, 22.0276, 20.1328)
+
+[node name="ClokControl" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 7.0
+offset_top = 29.0
+offset_right = 62.0
+offset_bottom = 47.0
+
+[node name="house" type="Label" parent="ClokControl"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 1.0
+offset_right = 53.0
+offset_bottom = 24.0
+text = "23"
+label_settings = ExtResource("2_x8glv")
+
+[node name="space" type="Label" parent="ClokControl"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 2.0
+offset_right = 73.0
+offset_bottom = 25.0
+text = ":"
+label_settings = ExtResource("2_x8glv")
+
+[node name="minutes" type="Label" parent="ClokControl"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 1.0
+offset_right = 77.0
+offset_bottom = 24.0
+text = "59"
+label_settings = ExtResource("2_x8glv")
+
+[node name="hourglass" type="Sprite2D" parent="ClokControl"]
+position = Vector2(7, 9)
+texture = ExtResource("1_ybvo8")
+region_enabled = true
+region_rect = Rect2(32.0165, 1.94984, 10.0344, 17.021)

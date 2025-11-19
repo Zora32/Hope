@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhletpnwblv7y"]
+
+[ext_resource type="Texture2D" uid="uid://rj5rj20mgfmy" path="res://art/Gusunuca.png" id="1_05j05"]
+[ext_resource type="Script" path="res://follow_movement.gd" id="2_pmslo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8vyl3"]
+radius = 8.06226
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ef4xk"]
+radius = 23.0
+
+[node name="Gusunuca" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_8vyl3")
+
+[node name="Foliow" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foliow"]
+position = Vector2(0, -4)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_ef4xk")
+
+[node name="FollowMovementC" type="Node" parent="."]
+script = ExtResource("2_pmslo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+texture = ExtResource("1_05j05")
+hframes = 4
+vframes = 4
+
+[connection signal="body_entered" from="Foliow" to="FollowMovementC" method="_on_foliow_body_entered"]

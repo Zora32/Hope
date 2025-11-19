@@ -1,0 +1,17 @@
+extends Button
+
+@onready var backroud_sprite: Sprite2D = $background
+@onready var item_stack_gui: ItemStackGui = $CenterContainer/Panel
+
+
+func update_to_slot(slot: InventorySlot):
+	if !slot.item:
+		item_stack_gui.visible = false
+		backroud_sprite.frame = 0
+		return
+	
+	item_stack_gui.inventorySlot = slot
+	item_stack_gui.update()
+	item_stack_gui.visible = true
+	
+	backroud_sprite.frame = 1

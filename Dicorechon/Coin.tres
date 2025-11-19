@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://coljosmy4kjst"]
+
+[ext_resource type="Script" path="res://inventory/inventoryItem.gd" id="1_yu1c2"]
+[ext_resource type="Texture2D" uid="uid://wlots2utmhu0" path="res://art/tiles.png" id="2_q8a1m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehoh4"]
+atlas = ExtResource("2_q8a1m")
+region = Rect2(0, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_yu1c2")
+name = "Coin"
+texture = SubResource("AtlasTexture_ehoh4")
+max_Amout = 10
+consumable = true

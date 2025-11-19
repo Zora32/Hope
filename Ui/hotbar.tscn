@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://1ih6ur5oybrx"]
+
+[ext_resource type="PackedScene" uid="uid://u1a464tyi57d" path="res://Ui/hotbar_slot.tscn" id="1_7lhi8"]
+[ext_resource type="Script" path="res://Ui/hotbar.gd" id="1_o52ru"]
+[ext_resource type="Texture2D" uid="uid://n31j25p5d3ds" path="res://art/hotbar_selector.png" id="3_s43t5"]
+
+[node name="Hotbar" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 117.0
+offset_bottom = 21.0
+script = ExtResource("1_o52ru")
+
+[node name="Container" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 116.0
+offset_bottom = 21.0
+
+[node name="Hotbar" parent="Container" instance=ExtResource("1_7lhi8")]
+layout_mode = 2
+
+[node name="Hotbar2" parent="Container" instance=ExtResource("1_7lhi8")]
+layout_mode = 2
+
+[node name="Hotbar3" parent="Container" instance=ExtResource("1_7lhi8")]
+layout_mode = 2
+
+[node name="Hotbar4" parent="Container" instance=ExtResource("1_7lhi8")]
+layout_mode = 2
+
+[node name="Hotbar5" parent="Container" instance=ExtResource("1_7lhi8")]
+layout_mode = 2
+
+[node name="Selector" type="Sprite2D" parent="."]
+texture = ExtResource("3_s43t5")
+centered = false

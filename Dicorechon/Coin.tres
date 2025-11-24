@@ -11,5 +11,5 @@ region = Rect2(0, 16, 16, 16)
 script = ExtResource("1_yu1c2")
 name = "Coin"
 texture = SubResource("AtlasTexture_ehoh4")
-max_Amout = 10
+max_amount = 10
 consumable = true

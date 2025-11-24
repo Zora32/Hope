@@ -1037,7 +1037,7 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_xns3s")
 
 [node name="Player" parent="." instance=ExtResource("1_brw0y")]
-position = Vector2(256, 32)
+position = Vector2(600, 104)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("tilemap", "follow_node")]
 position = Vector2(611, 130)

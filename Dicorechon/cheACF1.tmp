@@ -1,10 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://db2ci07c46dd0"]
+[gd_scene load_steps=7 format=3 uid="uid://db2ci07c46dd0"]
 
 [ext_resource type="Script" path="res://chest.gd" id="1_rntqy"]
-[ext_resource type="Script" path="res://inventory/inventoryItem.gd" id="2_7dqi0"]
 [ext_resource type="Texture2D" uid="uid://wlots2utmhu0" path="res://art/tiles.png" id="2_jhv3a"]
-[ext_resource type="Resource" uid="uid://coljosmy4kjst" path="res://Dicorechon/Coin.tres" id="3_sek1c"]
-[ext_resource type="Resource" uid="uid://c418huvl5qjn6" path="res://inventory/items/livepot.tres" id="4_yg2r1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcxyp"]
 size = Vector2(12, 6)
@@ -100,7 +97,7 @@ position = Vector2(0, -8)
 collision_layer = 17
 collision_mask = 0
 script = ExtResource("1_rntqy")
-item = Array[ExtResource("2_7dqi0")]([ExtResource("4_yg2r1"), ExtResource("3_sek1c"), ExtResource("3_sek1c")])
+items = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)

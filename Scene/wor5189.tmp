@@ -942,9 +942,6 @@ days = 0
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_rd4od")
-slime_scena = ExtResource("6_2qnom")
-gusunuca_scena = ExtResource("21_fvf45")
-boss_scena = ExtResource("10_12yeh")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -965,7 +962,32 @@ layer_4/y_sort_enabled = true
 layer_4/z_index = 1
 layer_4/tile_data = PackedInt32Array(196646, 4, 0)
 
-[node name="Mobe" type="Node2D" parent="TileMap"]
+[node name="slime" parent="TileMap" node_paths=PackedStringArray("endPoint", "startPoint") instance=ExtResource("6_2qnom")]
+position = Vector2(200, 64)
+endPoint = NodePath("Marker2D")
+startPoint = NodePath("Marker2D2")
+
+[node name="Marker2D" type="Marker2D" parent="TileMap/slime"]
+position = Vector2(0, 96)
+
+[node name="Marker2D2" type="Marker2D" parent="TileMap/slime"]
+position = Vector2(56, 0)
+
+[node name="slime2" parent="TileMap" node_paths=PackedStringArray("endPoint", "startPoint") instance=ExtResource("6_2qnom")]
+position = Vector2(206, 16)
+endPoint = NodePath("Marker2D")
+startPoint = NodePath("Marker2D2")
+
+[node name="Marker2D" type="Marker2D" parent="TileMap/slime2"]
+
+[node name="Marker2D2" type="Marker2D" parent="TileMap/slime2"]
+position = Vector2(114, 0)
+
+[node name="Gusunuca" parent="TileMap" instance=ExtResource("21_fvf45")]
+position = Vector2(521, 130)
+
+[node name="Boss" parent="TileMap" instance=ExtResource("10_12yeh")]
+position = Vector2(368, 128)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -1019,10 +1041,10 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_xns3s")
 
 [node name="Player" parent="." instance=ExtResource("1_brw0y")]
-position = Vector2(104, 88)
+position = Vector2(600, 104)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("tilemap", "follow_node")]
-position = Vector2(592, 104)
+position = Vector2(611, 130)
 zoom = Vector2(0.9, 0.9)
 limit_left = 0
 limit_top = -15
@@ -1061,15 +1083,6 @@ time_system = NodePath("../TimeSystem")
 
 [node name="Chest" parent="." instance=ExtResource("22_il3r3")]
 position = Vector2(632, 96)
-
-[node name="SlimeSpawn" type="Marker2D" parent="."]
-position = Vector2(208, 160)
-
-[node name="SlimeSpawn2" type="Marker2D" parent="."]
-position = Vector2(224, 64)
-
-[node name="BossSpawn" type="Marker2D" parent="."]
-position = Vector2(304, 128)
 
 [connection signal="closed" from="CanvasLayer/InvertoyGui" to="." method="_on_invertoy_gui_closed"]
 [connection signal="opened" from="CanvasLayer/InvertoyGui" to="." method="_on_invertoy_gui_opened"]

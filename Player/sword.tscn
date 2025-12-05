@@ -7,8 +7,6 @@
 size = Vector2(5.5, 10)
 
 [node name="Sword" type="Area2D"]
-collision_layer = 4
-collision_mask = 0
 script = ExtResource("1_galsw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

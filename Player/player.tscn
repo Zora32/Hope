@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_fdhj2"]
 [ext_resource type="Texture2D" uid="uid://bockas6exwnol" path="res://art/player.png" id="1_mk14k"]
-[ext_resource type="Resource" uid="uid://cjd1qabtpcbsj" path="res://inventory/playerInventory.tres" id="2_wxyk2"]
+[ext_resource type="Resource" uid="uid://cjd1qabtpcbsj" path="res://inventory/playerInventory.tres" id="2_h3ie4"]
 [ext_resource type="Script" path="res://Player/weapon.gd" id="4_m11lb"]
 [ext_resource type="Script" path="res://Player/sprite_2d.gd" id="5_1sud5"]
 [ext_resource type="Script" path="res://Player/interaction_comp.gd" id="6_ehf1e"]
@@ -347,7 +347,7 @@ y_sort_enabled = true
 position = Vector2(0, -7)
 collision_layer = 9
 script = ExtResource("1_fdhj2")
-inventory = ExtResource("2_wxyk2")
+inventory = ExtResource("2_h3ie4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1

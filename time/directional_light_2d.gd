@@ -61,12 +61,16 @@ func update(game_time: DateTime):
 	else:
 		color = color_map[current_state]
 		# обновление перехода
+	if current_state == 2:
+		Global.state = true
+	else:
+		Global.state = false
 
 func update_transition(time_diff: int, next_state: DayState):
 	var ratio = 1 - (time_diff as float / (transition_time * 60))
 	if ratio > 1:
 		current_state = next_state
-		print_debug(current_state)
+		
 		in_transition = false
 	else:
 		color = color_map[current_state].lerp(color_map[next_state], ratio)

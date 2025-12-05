@@ -14,7 +14,7 @@ var enemyCollisions = []
 var lastAnimaDirection: String = "Down"
 var isAttacking: bool = false
 
-@export var speed: int = 35
+@export var speed: int = 100
 @onready var animPlayer: AnimationPlayer = $AnimationPlayer
 @onready var effects: AnimationPlayer = $Effects
 @onready var hurt_timer: Timer = $hurtTimer
@@ -26,7 +26,12 @@ var isAttacking: bool = false
 
 @export var inventory: Inventory
 
+var damage: int
+
+
+
 func _ready() -> void:
+	Global.playerBody = self
 	inventory.use_item.connect(use_item)
 	effects.play("RESET")
 	weapon.disable()
@@ -78,7 +83,14 @@ func _physics_process(_delta: float) -> void:
 	if !isHurt:
 		for area in hurt_box.get_overlapping_areas():
 			if area.name == "hitBox":
+				damage = 1
 				hurtByEnemy(area)
+			if area.name == "firebool":
+				damage = 2
+				hurtByEnemy(area)
+			elif area.is_in_group("projectiles"):  # Снаряды должны быть в группе "projectiles"
+				take_projectile_damage(area)
+	
 
 func get_global_center_position() -> Vector2:
 	return global_position + sprite_2d.position
@@ -88,7 +100,7 @@ func clamp_to_limits(limit_position: Vector2, limit_size: Vector2):
 	global_position.y = clamp(global_position.y, limit_position.y +16, limit_position.y + limit_size.y)
 
 func hurtByEnemy(area):
-	currentHealth -= 1
+	currentHealth -= damage
 	if currentHealth < 0:
 		currentHealth = maxHealth
 		
@@ -125,3 +137,29 @@ func use_item(item: InventoryItem):
 	item.use(self)
 	if item.consumable:
 		inventory.remowe_last_used_item()
+
+func take_projectile_damage(projectile):
+	if projectile.has_method("get_damage"):
+		damage = projectile.get_damage()
+		currentHealth -= damage
+		
+		if currentHealth < 0:
+			currentHealth = maxHealth
+		
+		hearthChanged.emit(currentHealth)
+		isHurt = true
+		
+		# Кнокабэк от снаряда
+		var knockbackDirection = (projectile.direction).normalized() * knockbackPower
+		velocity = knockbackDirection
+		move_and_slide()
+		
+		effects.play("hurtBlink")
+		hurt_timer.start()
+		await hurt_timer.timeout
+		effects.play("RESET")
+		isHurt = false
+		
+		# Уничтожаем снаряд после попадания
+		if is_instance_valid(projectile):
+			projectile.queue_free()

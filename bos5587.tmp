@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://cgcps2unu1g61"]
+
+[ext_resource type="Script" path="res://follow_movement.gd" id="1_dgd5x"]
+[ext_resource type="Texture2D" uid="uid://b3uglfjvvhlmj" path="res://art/boss.png" id="2_icpgt"]
+[ext_resource type="Script" path="res://Tower.gd" id="3_0lvkj"]
+[ext_resource type="PackedScene" uid="uid://dy87qw70q33yd" path="res://Scene/projectile.tscn" id="4_by4q1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sp365"]
+radius = 12.0
+height = 42.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ef4xk"]
+radius = 37.054
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kiw7y"]
+radius = 66.0303
+
+[node name="Boss" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 3)
+shape = SubResource("CapsuleShape2D_sp365")
+
+[node name="Foliow" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foliow"]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_ef4xk")
+
+[node name="FollowMovementC" type="Node" parent="."]
+script = ExtResource("1_dgd5x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -9)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_icpgt")
+region_enabled = true
+region_rect = Rect2(9.80703, 48.8826, 49.4195, 77.2239)
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("3_0lvkj")
+projectile = ExtResource("4_by4q1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_kiw7y")
+
+[node name="TimerAttack" type="Timer" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(9, -20)
+
+[connection signal="body_entered" from="Foliow" to="FollowMovementC" method="_on_foliow_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
+[connection signal="timeout" from="TimerAttack" to="Area2D" method="_on_timer_attack_timeout"]
